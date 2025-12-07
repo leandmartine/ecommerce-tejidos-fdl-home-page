@@ -165,8 +165,9 @@ button {
 }
 
 .logo-img {
-  height: 60px;
+  height: 70px;
   width: auto;
+  object-fit: contain;
   transition: transform var(--transition-base);
 }
 
@@ -310,8 +311,9 @@ button {
 }
 
 .category-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: var(--space-xl);
   margin-bottom: var(--space-2xl);
 }
@@ -327,6 +329,9 @@ button {
   overflow: hidden;
   opacity: 0;
   transform: translateY(30px);
+  flex: 1 1 280px;
+  max-width: 400px;
+  min-width: 280px;
 }
 
 .category-card.animate {
@@ -694,7 +699,19 @@ button {
 }
 
 /* === Responsive Design === */
-@media (max-width: 768px) {
+
+/* Tablet and Mobile Styles (max-width: 1024px) - Hamburger Menu */
+@media (max-width: 1024px) {
+  .nav-container {
+    padding: var(--space-md) var(--space-lg);
+  }
+  
+  .logo-img {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+  }
+  
   .nav-menu {
     display: none;
     position: absolute;
@@ -705,6 +722,7 @@ button {
     flex-direction: column;
     padding: var(--space-lg);
     box-shadow: var(--shadow-lg);
+    gap: var(--space-md);
   }
   
   .nav-menu.active {
@@ -715,6 +733,21 @@ button {
     display: block;
   }
   
+  .category-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .hero p {
+    font-size: 1.15rem;
+  }
+}
+
+/* Mobile Styles (max-width: 768px) */
+@media (max-width: 768px) {
   .hero h1 {
     font-size: 2rem;
   }
